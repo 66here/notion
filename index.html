@@ -1,98 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quote</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quote</title>
+  <style>
+    .widget {
+      padding: 4px 4px;
+      color: #ffffff;
+      text-align: center;
+      max-width: 95%;
+      margin: auto;
+      font-size: 1.2em;
+      line-height: 1.2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-    <style>
-        .widget {
-            padding: 4px 4px; /* bisa kecilin kalau mau lebih rapat */
-            color: #ffffff;
-            text-align: center;
-            max-width: 95%;
-            margin: auto;
-            font-size: 1.2em; /* ukuran baru kamu */
-            line-height: 1.2; /* tambahkan ini */
-            display: flex; /* tambahkan ini */
-            align-items: center; /* biar teks vertikal center */
-            justify-content: center; /* biar teks horizontal center */
-        }
-
-
-        div {
-            width: 95%;
-            min-height: 100px;
-            background:
-                linear-gradient(to right, white 4px, transparent 4px) 0 0,
-                linear-gradient(to right, white 4px, transparent 4px) 0 100%,
-                linear-gradient(to left, white 4px, transparent 4px) 100% 0,
-                linear-gradient(to left, white 4px, transparent 4px) 100% 100%,
-                linear-gradient(to bottom, white 4px, transparent 4px) 0 0,
-                linear-gradient(to bottom, white 4px, transparent 4px) 100% 0,
-                linear-gradient(to top, white 4px, transparent 4px) 0 100%,
-                linear-gradient(to top, white 4px, transparent 4px) 100% 100%;
-            background-repeat: no-repeat;
-            background-size: 20px 20px;
-        }
-    </style>
+    div {
+      width: 95%;
+      min-height: 100px;
+      background:
+        linear-gradient(to right, white 4px, transparent 4px) 0 0,
+        linear-gradient(to right, white 4px, transparent 4px) 0 100%,
+        linear-gradient(to left, white 4px, transparent 4px) 100% 0,
+        linear-gradient(to left, white 4px, transparent 4px) 100% 100%,
+        linear-gradient(to bottom, white 4px, transparent 4px) 0 0,
+        linear-gradient(to bottom, white 4px, transparent 4px) 100% 0,
+        linear-gradient(to top, white 4px, transparent 4px) 0 100%,
+        linear-gradient(to top, white 4px, transparent 4px) 100% 100%;
+      background-repeat: no-repeat;
+      background-size: 20px 20px;
+    }
+  </style>
 </head>
 <body>
+  <div class="widget" id="widget"></div>
 
-    <div class="widget" id="widget"></div>
+  <script>
+    const quotes = [
+      "Growth isn’t linear — it’s full of noise, but still trending upward.",
+      "We all start as rough data — learning is the process of cleaning ourselves.",
+      "Not every variable needs to be controlled — some randomness makes life meaningful.",
+      "Even when p < 0.05, life doesn’t always go as expected.",
+      "Each day adds a new data point — someday the trend will make sense.",
+      "Don’t delete your outliers — sometimes they define who you are.",
+      "Learning is like regression — you minimize the loss, not eliminate it.",
+      "The more I learn, the wider my confidence interval becomes — and that’s okay.",
+      "Some days you’re the mean, some days the variance — both are needed for balance.",
+      "Keep iterating — every version of you is a better fit than before.",
+      "Wisdom is like Bayesian inference — updating beliefs with every piece of evidence.",
+      "You can’t control the distribution, but you can choose how to sample from it.",
+      "Even noise contains truth, if you listen long enough.",
+      "Don’t rush convergence — meaningful models take time to train.",
+      "Be your own analyst — interpret your life with compassion, not bias.",
+      "Your past mistakes are just data — use them to update your model.",
+      "Don’t overfit to others’ expectations — generalize to your own purpose.",
+      "Confidence comes not from certainty, but from continuous testing.",
+      "Even when results aren’t significant, the process still matters.",
+      "You can’t normalize everything — some differences are meant to stay.",
+      "Variance without direction is chaos; direction without variance is stagnation.",
+      "Every iteration refines you — trust the process of reparameterization.",
+      "Curiosity is the true optimizer — it keeps the learning rate alive.",
+      "Your worth isn’t a single metric — it’s a multidimensional measure.",
+      "Some hypotheses fail, but every failure narrows the search space.",
+      "Don’t be afraid of missing values — growth fills the gaps.",
+      "Progress isn’t binary — even partial improvement is signal.",
+      "Life’s not a closed-form solution — sometimes you just need to approximate.",
+      "The goal isn’t perfection, it’s convergence toward something better.",
+    ];
 
-<script>
-quotes = [
-"Growth isn’t linear — it’s full of noise, but still trending upward.",
-"We all start as rough data — learning is the process of cleaning ourselves.",
-"Not every variable needs to be controlled — some randomness makes life meaningful.",
-"Even when p < 0.05, life doesn’t always go as expected.",
-"Each day adds a new data point — someday the trend will make sense.",
-"Don’t delete your outliers — sometimes they define who you are.",
-"Learning is like regression — you minimize the loss, not eliminate it.",
-"The more I learn, the wider my confidence interval becomes — and that’s okay.",
-"Some days you’re the mean, some days the variance — both are needed for balance.",
-"Keep iterating — every version of you is a better fit than before.",
-"Wisdom is like Bayesian inference — updating beliefs with every piece of evidence.",
-"You can’t control the distribution, but you can choose how to sample from it.",
-"Even noise contains truth, if you listen long enough.",
-"Don’t rush convergence — meaningful models take time to train.",
-"Be your own analyst — interpret your life with compassion, not bias.",
-"Your past mistakes are just data — use them to update your model.",
-"Don’t overfit to others’ expectations — generalize to your own purpose.",
-"Confidence comes not from certainty, but from continuous testing.",
-"Even when results aren’t significant, the process still matters.",
-"You can’t normalize everything — some differences are meant to stay.",
-"Variance without direction is chaos; direction without variance is stagnation.",
-"Every iteration refines you — trust the process of reparameterization.",
-"Curiosity is the true optimizer — it keeps the learning rate alive.",
-"Your worth isn’t a single metric — it’s a multidimensional measure.",
-"Some hypotheses fail, but every failure narrows the search space.",
-"Don’t be afraid of missing values — growth fills the gaps.",
-"Progress isn’t binary — even partial improvement is signal.",
-"Life’s not a closed-form solution — sometimes you just need to approximate.",
-"The goal isn’t perfection, it’s convergence toward something better.",
-];
+    // ubah ke 5 menit
+    const INTERVAL_MINUTES = 5;
+    const INTERVAL_MS = INTERVAL_MINUTES * 60 * 1000;
 
-// ubah jadi 3 jam = 3 * 60 menit * 60 detik * 1000 ms
-const INTERVAL = 3 * 60 * 60 * 1000;
+    function displayQuote() {
+      const now = new Date();
+      const intervalIndex = Math.floor(now.getTime() / INTERVAL_MS);
+      const index = intervalIndex % quotes.length;
+      document.getElementById('widget').innerHTML = quotes[index];
+    }
 
-function displayQuote(){
-    document.getElementById('widget').innerHTML = quotes[0];
-    quotes.forEach((quote, i) => {
-        setTimeout(() => {
-            document.getElementById('widget').innerHTML = quote;
-        }, i * INTERVAL);
-    });
-}
-
-function displayWidget() {
     displayQuote();
-    setTimeout(displayWidget, quotes.length * INTERVAL);
-}
-
-displayWidget();
-</script>
-
+  </script>
 </body>
 </html>
